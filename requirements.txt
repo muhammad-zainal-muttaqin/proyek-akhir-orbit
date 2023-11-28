@@ -1,0 +1,12 @@
+Flask>=2.1.0
+pandas
+transformers
+tensorflow
+demoji
+wordcloud
+matplotlib
+spacy
+click>=8.0
+huggingface-hub
+tokenizers
+safetensors

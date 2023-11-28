@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sentiment Analysis</title>
+  </head>
+  <body>
+    <h1>Sentiment Analysis</h1>
+
+    {% if results %}
+    <h2>Results:</h2>
+
+    {% for result in results %}
+    <p>
+      {{ result.0 }} - {{ result.1 }} (Pos Confidence: {{ result.2 }}, Neg
+      Confidence: {{ result.3 }})
+    </p>
+    {% endfor %}
+
+    <!-- Word Cloud Container -->
+    <div id="wordCloudContainer">
+      <p>POSITIVE</p>
+      <img
+        src="{{ url_for('static', filename='wordcloud_positive.png') }}"
+        alt="Word Cloud Positif"
+      />
+    </div>
+
+    <div id="wordCloudContainer">
+      <p>NEGATIVE</p>
+      <img
+        src="{{ url_for('static', filename='wordcloud_negative.png') }}"
+        alt="Word Cloud Negatif"
+      />
+    </div>
+
+    <br />
+
+    <!-- Pie Chart Container -->
+    <div id="pieChartContainer">
+      <img
+        src="{{ url_for('static', filename='piechart.png') }}"
+        alt="Pie Chart"
+      />
+    </div>
+
+    {% endif %}
+
+    <form method="post" enctype="multipart/form-data" action="/">
+      <label for="file">Upload CSV file:</label>
+      <input type="file" name="file" accept=".csv" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
