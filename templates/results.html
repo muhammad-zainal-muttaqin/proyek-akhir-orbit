@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>SUPC - ANALYSIS</title>
+    <!-- Favicon-->
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="{{ url_for('static', filename='assets/favicon.ico') }}"
+    />
+    <!-- Bootstrap icons-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link
+      href="{{ url_for('static', filename='css/styles.css') }}"
+      rel="stylesheet"
+    />
+    <!-- Custom styles -->
+    <style>
+      body {
+        background-color: #f8f9fa;
+        color: #343a40;
+        font-family: "Lato", sans-serif;
+      }
+
+      .navbar {
+        background-color: #ffffff;
+        border-bottom: 1px solid #dee2e6;
+        box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand {
+        color: #007bff;
+        font-weight: bold;
+      }
+
+      .navbar-brand:hover {
+        color: #0056b3;
+      }
+
+      .btn-primary {
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+      }
+
+      .results {
+        padding: 80px 0;
+      }
+
+      .results h2 {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+        color: #007bff;
+      }
+
+      .results p {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .word-cloud-container {
+        margin-bottom: 30px;
+      }
+
+      .word-cloud-container p {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #343a40;
+        margin-bottom: 15px;
+      }
+
+      .word-cloud-container img {
+        width: 100%;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+      }
+
+      .pie-chart-container {
+        margin-top: 30px;
+      }
+
+      .pie-chart-container p {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #343a40;
+        margin-bottom: 15px;
+      }
+
+      .pie-chart-container img {
+        width: 100%;
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+      }
+
+      .footer {
+        background-color: #ffffff;
+        padding: 25px 0;
+        border-top: 1px solid #dee2e6;
+        margin-top: 50px;
+      }
+
+      .footer a {
+        color: #343a40;
+      }
+
+      .footer a:hover {
+        color: #0056b3;
+      }
+
+      .footer p {
+        font-size: 0.9rem;
+        color: #6c757d;
+      }
+
+      .footer i {
+        font-size: 2rem;
+        margin-right: 15px;
+        color: #007bff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation-->
+    <nav class="navbar navbar-light bg-light static-top">
+      <div class="container">
+        <a class="navbar-brand" href="{{ url_for('index') }}"
+          >SUPC - Analysis</a
+        >
+        <a class="btn btn-primary" href="#signup">Sign Up</a>
+      </div>
+    </nav>
+    <!-- Results Section -->
+    <section class="results">
+      <div class="container position-relative">
+        {% if results %}
+        <h2>Analysis Results</h2>
+
+        {% for result in results %} {% endfor %}
+
+        <!-- Pie Chart Container -->
+        <div class="pie-chart-container">
+          <p>PIE CHART</p>
+          <img
+            src="{{ url_for('static', filename='piechart.png') }}"
+            alt="Pie Chart"
+          />
+        </div>
+        <br />
+
+        <!-- Word Cloud Containers -->
+        <div class="row">
+          <!-- Negative Word Cloud Container -->
+          <div class="col-md-6">
+            <div class="word-cloud-container">
+              <p>POSITIVE WORD CLOUD</p>
+              <img
+                src="{{ url_for('static', filename='wordcloud_positive.png') }}"
+                alt="Word Cloud Positif"
+              />
+            </div>
+          </div>
+          <!-- Positive Word Cloud Container -->
+          <div class="col-md-6">
+            <div class="word-cloud-container">
+              <p>NEGATIVE WORD CLOUD</p>
+              <img
+                src="{{ url_for('static', filename='wordcloud_negative.png') }}"
+                alt="Word Cloud Negatif"
+              />
+            </div>
+          </div>
+        </div>
+
+        {% else %}
+        <p>No analysis results available.</p>
+        {% endif %}
+      </div>
+    </section>
+
+    <!-- Footer-->
+    <footer class="footer bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item"><a href="#!">About</a></li>
+              <li class="list-inline-item">⋅</li>
+              <li class="list-inline-item"><a href="#!">Contact</a></li>
+              <li class="list-inline-item">⋅</li>
+              <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
+              <li class="list-inline-item">⋅</li>
+              <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
+            </ul>
+            <p class="text-muted small mb-4 mb-lg-0">
+              &copy; Your Website 2023. All Rights Reserved.
+            </p>
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item me-4">
+                <a href="#!"><i class="bi-facebook fs-3"></i></a>
+              </li>
+              <li class="list-inline-item me-4">
+                <a href="#!"><i class="bi-twitter fs-3"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#!"><i class="bi-instagram fs-3"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  </body>
+</html>
